@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentEase - Choose Your Option</title>
+    <link rel="stylesheet" href="optionPage.css">
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">RentEase</a>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Properties</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+    <main>
+        <div class="image-container">
+            <img src="../house.png" alt="House Illustration" class="floating-house">
+        </div>
+        <div class="options-container">
+            <h2>What would you like to do?</h2>
+            <div class="button-container">
+                <button class="option-button rent-button" onclick="
+                    window.location.href = `../rentPage/rentPage.html`">Rent</button>
+                <button class="option-button sell-button" onclick=" window.location.href = `../sellPage/sellPage.html`">Sell</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

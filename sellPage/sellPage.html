@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentEase - List Your Property</title>
+    <link rel="stylesheet" href="sellPage.css">
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">RentEase</a>
+        <a href="#" class="logo">Seller</a>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Properties</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+    <div class="content-container">
+        <aside class="sidebar">
+            <a href="#" class="sidebar-item">Dashboard</a>
+            <a href="#" class="sidebar-item">My Listings</a>
+            <a href="#" class="sidebar-item">Add Property</a>
+            <a href="#" class="sidebar-item">Messages</a>
+            <a href="#" class="sidebar-item">Analytics</a>
+            <a href="#" class="sidebar-item">Settings</a>
+        </aside>
+        <main class="main-content">
+            <form class="listing-form">
+                <h2 class="form-title">List Your Property</h2>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">Basic Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Property Name</label>
+                            <input type="text" class="form-control" placeholder="Enter property name">
+                        </div>
+                        <div class="form-group">
+                            <label>Property Type</label>
+                            <select class="form-control">
+                                <option>Apartment</option>
+                                <option>House</option>
+                                <option>Villa</option>
+                                <option>Townhouse</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Price (per month)</label>
+                            <input type="number" class="form-control" placeholder="Enter price">
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" class="form-control" placeholder="Enter location">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="form-section-title">Property Details</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Bedrooms</label>
+                            <input type="number" class="form-control" placeholder="Number of bedrooms">
+                        </div>
+                        <div class="form-group">
+                            <label>Bathrooms</label>
+                            <input type="number" class="form-control" placeholder="Number of bathrooms">
+                        </div>
+                        <div class="form-group">
+                            <label>Square Footage</label>
+                            <input type="number" class="form-control" placeholder="Total square feet">
+                        </div>
+                        <div class="form-group">
+                            <label>Year Built</label>
+                            <input type="number" class="form-control" placeholder="Year of construction">
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Description</label>
+                            <textarea class="form-control" placeholder="Describe your property..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="form-section-title">Photos</h3>
+                    <div class="form-group">
+                        <div class="file-upload">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                            <p style="margin-top: 1rem; color: #e5e7eb;">Drop your images here or click to upload</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button">List Property</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

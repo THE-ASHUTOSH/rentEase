@@ -28,6 +28,7 @@ nav {
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 2rem;
 }
 
@@ -80,6 +81,9 @@ main {
   border-radius: 8px;
   font-weight: bold;
   transition: background-color 0.3s ease;
+}
+.top{
+  padding: 0.5rem 2rem;
 }
 
 .cta-button:hover {

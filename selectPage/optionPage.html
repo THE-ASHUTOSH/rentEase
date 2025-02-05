@@ -10,10 +10,19 @@
     <nav>
         <a href="#" class="logo">RentEase</a>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Properties</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="">Home</a>
+            <div class="profile-menu hidden" id="profileMenu">
+                <img
+                  src="images/default-avatar.png"
+                  id="profilePic"
+                  alt="Profile"
+                  class="profile-pic"
+                />
+                <div class="dropdown hidden" id="profileDropdown">
+                  <p id="userEmail">User</p>
+                  <button id="logoutBtn" class="btn btn-outline">Logout</button>
+                </div>
+              </div>
         </div>
     </nav>
     <main>
@@ -23,11 +32,15 @@
         <div class="options-container">
             <h2>What would you like to do?</h2>
             <div class="button-container">
+                <button class="location-button">Location</button>
                 <button class="option-button rent-button" onclick="
                     window.location.href = `../rentPage/rentPage.html`">Rent</button>
                 <button class="option-button sell-button" onclick=" window.location.href = `../sellPage/sellPage.html`">Sell</button>
             </div>
+            <div class="location-box"></div>
         </div>
     </main>
+    <script type="module" src="optionPage.js"></script>
+    <script type="module" src="../fb.js"></script>
 </body>
 </html>

@@ -47,11 +47,15 @@ async function returnName() {
   const user = await checkUser(); // Wait for checkUser to resolve
   return user.displayName; // Return the display name from the resolved user object
 }
+async function returnPhoto() {
+  const user = await checkUser(); // Wait for checkUser to resolve
+  return user.photoURL; // Return the display name from the resolved user object
+}
 const userSignOut = async () => {
   try {
     await signOut(auth);
     console.log("User signed out");
-    window.location.href = "index.html"; // Redirect to login page after logout
+    window.location.href = "../index.html"; // Redirect to login page after logout
   } catch (error) {
     console.log("Error signing out:", error);
   }
@@ -63,4 +67,4 @@ const userSignOut = async () => {
 // }
 
 // Attach event listener to login button
-export {userSignIn,checkUser,returnName}
+export {userSignIn,checkUser,returnName,returnPhoto,userSignOut}

@@ -1,57 +1,14 @@
-import { returnName, checkUser,returnPhoto,userSignOut } from "../fb.js";
-await checkUser();
+import {returnName,returnPhoto} from "../fb.js";
+//Updating the user with the user name photolet name = await returnName();
 let name = await returnName();
 let photo = await returnPhoto();
 
-// Updating the user with the user name photo
-let user = document.querySelectorAll("#userName")
-for(let u of user){
-  u.innerHTML = name
+  let user = document.querySelectorAll("#userName");
+for (let u of user) {
+  u.innerHTML = name;
 }
-document.querySelector("#profilePic").src = photo || "../images/image.png";
-
-//Dectecting location
-const locationBtn = document.querySelector(".location-button");
-
-locationBtn.addEventListener("click", () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else {
-    document.getElementById("output").innerText =
-      "Geolocation is not supported by this browser.";
-  }
-});
-
-function showPosition(position) {
-  const latitude = position.coords.latitude;
-  const longitude = position.coords.longitude;
-
-  // You can use this data with other APIs, e.g., Google Maps API for visualization
-  console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-  document.querySelector(
-    ".location-box"
-  ).innerHTML = `Location: <br>   Latitude: ${latitude}, Longitude: ${longitude}`;
-}
-
-function showError(error) {
-  switch (error.code) {
-    case error.PERMISSION_DENIED:
-      alert("User denied the request for Geolocation.");
-      break;
-    case error.POSITION_UNAVAILABLE:
-      alert("Location information is unavailable.");
-      break;
-    case error.TIMEOUT:
-      alert("The request to get user location timed out.");
-      break;
-    case error.UNKNOWN_ERROR:
-      alert("An unknown error occurred.");
-      break;
-  }
-}
-
+document.querySelector("#profilePic").src = photo || "images/image.png";
 // profile menu
-
 const profileImg = document.querySelector(".profile-menu");
 const profileDropdown = document.querySelector(".dropdown");
 let profileDropdownToggle = false;
@@ -64,4 +21,72 @@ profileImg.addEventListener("click", () => {
 //Logout
 document.querySelector("#logoutBtn").addEventListener("click", () => {
   userSignOut();
-})
+});
+
+
+//Dectecting location
+const locationBtn = document.querySelector(".location-button");
+
+locationBtn.addEventListener("click", () => {
+  if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(getLocation, showError);
+     
+  } else {
+    document.getElementById("output").innerText =
+      "Geolocation is not supported by this browser.";
+  }
+});
+
+async function getLocation(position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+
+  try {
+    const address = await fetchAddress(latitude, longitude);
+    document.querySelector(".location-box").innerHTML = `
+      <strong>Location:</strong><br>
+      Latitude: ${latitude}, Longitude: ${longitude}<br>
+      Address: ${address}
+    `;
+  } catch (error) {
+    console.error("Error fetching address:", error);
+    document.querySelector(".location-box").innerHTML =
+      "Failed to retrieve address. Please try again.";
+  }
+}
+
+async function fetchAddress(latitude, longitude) {
+  try {
+    const response = await fetch(
+      `https://us1.locationiq.com/v1/reverse?key=pk.78a59df4fd8aaf9781702d79911e2a29&lat=${latitude}&lon=${longitude}&format=json`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch address. Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.display_name;  // Return the full address string
+  } catch (error) {
+    throw new Error("Unable to fetch address.");
+  }
+}
+
+function showError(error) {
+  let message;
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      message = "User denied the request for Geolocation.";
+      break;
+    case error.POSITION_UNAVAILABLE:
+      message = "Location information is unavailable.";
+      break;
+    case error.TIMEOUT:
+      message = "The request to get user location timed out.";
+      break;
+    default:
+      message = "An unknown error occurred.";
+      break;
+  }
+  alert(message);
+}

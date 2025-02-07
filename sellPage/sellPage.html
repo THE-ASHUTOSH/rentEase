@@ -12,9 +12,19 @@
         <a href="#" class="logo">Seller</a>
         <div class="nav-links">
             <a href="#">Home</a>
-            <a href="#">Properties</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <div id="userName">User</div>
+            <div class="profile-menu" id="profileMenu">
+                <img
+                  src="../images/image.png"
+                  id="profilePic"
+                  alt="Profile"
+                  class="profile-pic"
+                />
+                <div class="dropdown hidden" id="profileDropdown">
+                  <p id="userName">User</p>
+                  <button id="logoutBtn" class="btn btn-outline">Logout</button>
+                </div>
+              </div>
         </div>
     </nav>
     <div class="content-container">
@@ -35,11 +45,11 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label>Property Name</label>
-                            <input type="text" class="form-control" placeholder="Enter property name">
+                            <input type="text" class="form-control" id = "name" placeholder="Enter property name">
                         </div>
                         <div class="form-group">
                             <label>Property Type</label>
-                            <select class="form-control">
+                            <select class="form-control" id = "type">
                                 <option>Apartment</option>
                                 <option>House</option>
                                 <option>Villa</option>
@@ -48,11 +58,11 @@
                         </div>
                         <div class="form-group">
                             <label>Price (per month)</label>
-                            <input type="number" class="form-control" placeholder="Enter price">
+                            <input type="number" class="form-control" id="price" placeholder="Enter price">
                         </div>
                         <div class="form-group">
                             <label>Location</label>
-                            <input type="text" class="form-control" placeholder="Enter location">
+                            <input type="text" class="form-control" id="location" placeholder="Enter location">
                         </div>
                     </div>
                 </div>
@@ -86,14 +96,8 @@
                 <div class="form-section">
                     <h3 class="form-section-title">Photos</h3>
                     <div class="form-group">
-                        <div class="file-upload">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                <polyline points="17 8 12 3 7 8"/>
-                                <line x1="12" y1="3" x2="12" y2="15"/>
-                            </svg>
-                            <p style="margin-top: 1rem; color: #e5e7eb;">Drop your images here or click to upload</p>
-                        </div>
+                        <label>Link</label>
+                        <input type="text" class="form-control" id="image" placeholder="Enter link of image">
                     </div>
                 </div>
 
@@ -101,5 +105,7 @@
             </form>
         </main>
     </div>
+    <script type="module" src="sellPage.js"></script>
+    <script type="module" src="../fb.js"></script>
 </body>
 </html>

@@ -5,7 +5,8 @@ import {
 import { db, returnName, returnPhoto } from "../fb.js";
 
 let propertyArray = [];
-
+let loader = document.querySelector('.loader');
+loader.style.display = 'flex'
 //Updating the user with the user name photolet name = await returnName();
 let name = await returnName();
 let photo = await returnPhoto();
@@ -54,8 +55,11 @@ async function getUsers() {
                     </div>
                 </div>`;
   });
+  loader.style.display = 'none'
 }
+
 getUsers();
+
 
 //filter search for all properties
 document.querySelector("#allProperties").addEventListener("click", () => {
@@ -179,3 +183,4 @@ document.querySelector(".search-bar").addEventListener("keydown", (e) => {
     });
   }
 });
+

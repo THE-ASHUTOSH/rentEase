@@ -1,7 +1,8 @@
 import {collection,addDoc,} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { db ,returnName,returnPhoto} from "../fb.js";
 
-//Updating the user with the user name photolet name = await returnName();
+let loader = document.querySelector('.loader');
+
 let n = await returnName();
 let photo = await returnPhoto();
 
@@ -55,13 +56,16 @@ const rating = document.querySelector("#rating");
 const image = document.querySelector("#image");
 
 document.addEventListener("submit", async (e) => {
+  loader.style.display = 'flex'
   e.preventDefault();
-  if(address.value == "" || name.value == "" || price.value == "" || type.value == "" || rating.value == "" || image.value == ""){
+  if(address.value == "" || name.value == "" || price.value == "" || type.value == "" || image.value == ""){
     alert("Please fill all the fields");
+    loader.style.display = 'none'
   }else{
     await addUser();
     alert("Property added successfully");
     window.location.href = "../selectPage/optionPage.html";
+    loader.style.display = 'none'
   }
 });
 

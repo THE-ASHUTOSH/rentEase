@@ -53,12 +53,16 @@ const price = document.querySelector("#price");
 const type = document.querySelector("#type");
 const rating = document.querySelector("#rating");
 const image = document.querySelector("#image");
+
 document.addEventListener("submit", async (e) => {
   e.preventDefault();
-  await addUser();
-  console.log("kbsf");
-  alert("Property added successfully");
-  window.location.href = "../selectPage/optionPage.html";
+  if(address.value == "" || name.value == "" || price.value == "" || type.value == "" || rating.value == "" || image.value == ""){
+    alert("Please fill all the fields");
+  }else{
+    await addUser();
+    alert("Property added successfully");
+    window.location.href = "../selectPage/optionPage.html";
+  }
 });
 
 

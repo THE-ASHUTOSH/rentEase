@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -43,6 +44,9 @@ nav {
 }
 
 main {
+  
+}
+section{
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -55,7 +59,6 @@ main {
   flex: 1;
   max-width: 600px;
   margin-left: 5rem;
-  
 }
 
 .content h1 {
@@ -96,7 +99,7 @@ main {
   justify-content: center;
   align-items: center;
   position: relative;
-  background:url("image.png");
+  background:url("images/image.png");
   background-repeat: no-repeat;
   background-size:contain;
   background-position: center;
@@ -128,4 +131,77 @@ main {
       width: 300px;
       height: 240px;
   }
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.feature-card {
+  background-color: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: #3b82f6;
+  margin-bottom: 1rem;
+}
+
+.feature-title {
+  color: #3b82f6;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+.contact-container {
+  margin: 0 auto;
+}
+
+.contact-form {
+  width: 50vw;
+  background-color: #0d1117;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #e5e7eb;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #1a1a1a;
+  border: 2px solid #3b82f6;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
 }

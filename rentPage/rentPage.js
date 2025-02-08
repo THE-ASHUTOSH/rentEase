@@ -2,7 +2,7 @@ import {
   collection,
   getDocs,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-import { db,returnName,returnPhoto } from "../fb.js";
+import { db, returnName, returnPhoto } from "../fb.js";
 
 let propertyArray = [];
 
@@ -10,7 +10,7 @@ let propertyArray = [];
 let name = await returnName();
 let photo = await returnPhoto();
 
-  let user = document.querySelectorAll("#userName");
+let user = document.querySelectorAll("#userName");
 for (let u of user) {
   u.innerHTML = name;
 }
@@ -30,7 +30,6 @@ document.querySelector("#logoutBtn").addEventListener("click", () => {
   userSignOut();
 });
 
-
 // Get all documents from the "users" collection
 async function getUsers() {
   const querySnapshot = await getDocs(collection(db, "property"));
@@ -38,12 +37,20 @@ async function getUsers() {
     propertyArray.push(doc.data());
     document.querySelector(".property-grid").innerHTML += `
                 <div class="property-card">
-                    <img src="${doc.data().image}" alt="Property 1" class="property-image">
+                    <img src="${
+                      doc.data().image
+                    }" alt="Property 1" class="property-image">
                     <div class="property-info">
                         <h3 class="property-title">${doc.data().name}</h3>
-                        <div class="property-price">₹${doc.data().price}/month</div>
-                        <div class="property-rating">★★★★★ ${doc.data().rating}</div>
-                        <div class="property-location">${doc.data().address}</div>
+                        <div class="property-price">₹${
+                          doc.data().price
+                        }/month</div>
+                        <div class="property-rating">★★★★★ ${
+                          doc.data().rating
+                        }</div>
+                        <div class="property-location">${
+                          doc.data().address
+                        }</div>
                     </div>
                 </div>`;
   });
@@ -118,7 +125,7 @@ document.querySelector("#villas").addEventListener("click", () => {
                         <div class="property-location">${property.address}</div>
                     </div>
                 </div>`;
-    }  
+    }
   });
 });
 //filter search for townhouse
@@ -138,4 +145,37 @@ document.querySelector("#townhouse").addEventListener("click", () => {
                 </div>`;
     }
   });
+});
+
+//search bar
+document.querySelector(".search-bar").addEventListener("keydown", (e) => {
+  if (e.key == "Enter") {
+    document.querySelector(".property-grid").innerHTML = "";
+    propertyArray.forEach((property) => {
+      if (
+        property.name
+          .toLowerCase()
+          .includes(
+            document.querySelector(".search-bar").value.toLowerCase() 
+          )
+            ||
+        property.address
+          .toLowerCase()
+          .includes(
+            document.querySelector(".search-bar").value.toLowerCase()
+          )
+      ) {
+        document.querySelector(".property-grid").innerHTML += `
+                <div class="property-card">
+                    <img src="${property.image}" alt="Property 1" class="property-image">
+                    <div class="property-info">
+                        <h3 class="property-title">${property.name}</h3>
+                        <div class="property-price">₹${property.price}/month</div>
+                        <div class="property-rating">★★★★★ ${property.rating}</div>
+                        <div class="property-location">${property.address}</div>
+                    </div>
+                </div>`;
+      }
+    });
+  }
 });

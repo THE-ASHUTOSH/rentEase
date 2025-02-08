@@ -1,5 +1,5 @@
 import {returnName,returnPhoto} from "../fb.js";
-//Updating the user with the user name photolet name = await returnName();
+
 let name = await returnName();
 let photo = await returnPhoto();
 
@@ -45,7 +45,6 @@ async function getLocation(position) {
     const address = await fetchAddress(latitude, longitude);
     document.querySelector(".location-box").innerHTML = `
       <strong>Location:</strong><br>
-      Latitude: ${latitude}, Longitude: ${longitude}<br>
       Address: ${address}
     `;
   } catch (error) {
@@ -66,7 +65,7 @@ async function fetchAddress(latitude, longitude) {
     }
 
     const data = await response.json();
-    return data.display_name;  // Return the full address string
+    return data.display_name;  
   } catch (error) {
     throw new Error("Unable to fetch address.");
   }

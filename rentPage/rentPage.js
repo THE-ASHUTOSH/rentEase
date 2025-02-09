@@ -7,7 +7,6 @@ import { db, returnName, returnPhoto } from "../fb.js";
 let propertyArray = [];
 let loader = document.querySelector('.loader');
 loader.style.display = 'flex'
-//Updating the user with the user name photolet name = await returnName();
 let name = await returnName();
 let photo = await returnPhoto();
 
@@ -31,7 +30,6 @@ document.querySelector("#logoutBtn").addEventListener("click", () => {
   userSignOut();
 });
 
-// Get all documents from the "users" collection
 async function getUsers() {
   const querySnapshot = await getDocs(collection(db, "property"));
   querySnapshot.forEach((doc) => {

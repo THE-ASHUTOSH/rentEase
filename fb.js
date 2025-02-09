@@ -54,6 +54,10 @@ async function returnPhoto() {
   const user = await checkUser(); // Wait for checkUser to resolve
   return user.photoURL; // Return the display name from the resolved user object
 }
+async function returnEmail() {
+  const user = await checkUser(); // Wait for checkUser to resolve
+  return user.email; // Return the display name from the resolved user object
+}
 const userSignOut = async () => {
   try {
     await signOut(auth);
@@ -70,7 +74,7 @@ const userSignOut = async () => {
 // }
 
 // Attach event listener to login button
-export {userSignIn,checkUser,returnName,returnPhoto,userSignOut,db}
+export {userSignIn,checkUser,returnName,returnPhoto,userSignOut,db,returnEmail}
 
 
 
